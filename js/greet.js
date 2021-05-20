@@ -25,12 +25,14 @@ var instanceTheGreet = theGreeting();
 
 function reset() {
   counter = 0;
-  localStorage ['namesStore'] = counter;
-  nameElem.innerHTML = "";
+  var name = "";
+  localStorage ['name'] = "";
+  namesStore = [];
+  // nameElem.innerHTML = "";
   dispalyElement.innerHTML = "";
   theCounterElement.innerHTML = counter;
-
-  namesStore = [];
+  localStorage.removeItem('name');
+  
 
 }
 
@@ -38,26 +40,33 @@ function  greetings(){
 var radio = document.querySelector("input[name='language']:checked" );
 
 if(radio) {
-  // var lowerCaps = nameElem.toL
+   if(nameElem.value == ""){
+    document.querySelector(".forName").style.color = "red";
+    setTimeout(function(){ errorMsgElem.innerHTML = ""}, 3000);
+   }
 
     instanceTheGreet.weStorenames(nameElem.value);
     theCounterElement.innerHTML = instanceTheGreet.theCounter();
     dispalyElement.innerHTML = instanceTheGreet.weGreetPeople(radio.value, nameElem.value);
-    setTimeout(function(){  dispalyElement.innerHTML = ""}, 3000);
+    setTimeout(function(){  dispalyElement.innerHTML = ""}, 10000);
   
  }
- else if (nameElem.value === ""){
-  errorMsgElem.innerHTML = "Name cannot be empty";
-  setTimeout(function(){ errorMsgElem.innerHTML = ""}, 3000);
+ else if (!radio && nameElem.value === ""){
+  // errorMsgElem.innerHTML = "Please enter name* and select the language*";
+  document.querySelector(".errorM").style.color = "red";
+  setTimeout(function(){ 
+  document.querySelector(".errorM").style.color = "black"
+}, 3000);
  }
 
- else if (radio && nameElem.value === ""){
-  errorMsgElem.innerHTML = "Enter name and select the language";
-  setTimeout(function(){ errorMsgElem.innerHTML = ""}, 3000);
- }
+//  else if (radio && nameElem.value === ""){
+//   // errorMsgElem.innerHTML = "Enter name and select the language";
+//   document.querySelector(".error").style.color = "red"
+//   setTimeout(function(){ errorMsgElem.innerHTML = ""}, 3000);
+//  }
 
 else if (!radio){
-  errorMsgElem.innerHTML = "Please select the language";
+  document.querySelector(".errRbtn").style.color = "red";
   setTimeout(function(){ errorMsgElem.innerHTML = ""}, 3000);
 }
 
