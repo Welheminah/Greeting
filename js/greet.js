@@ -23,15 +23,15 @@ var forSave;
 var instanceTheGreet = theGreeting();
 
 
-function reset() {
+ function reset() {
   counter = 0;
-  var name = "";
   localStorage ['name'] = "";
   namesStore = [];
-  // nameElem.innerHTML = "";
+  nameElem.innerHTML = "";
   dispalyElement.innerHTML = "";
   theCounterElement.innerHTML = counter;
-  localStorage.removeItem('name');
+  // localStorage.clear('name');
+  window.location.reload();
   
 
 }
@@ -42,7 +42,11 @@ var radio = document.querySelector("input[name='language']:checked" );
 if(radio) {
    if(nameElem.value == ""){
     document.querySelector(".forName").style.color = "red";
-    setTimeout(function(){ errorMsgElem.innerHTML = ""}, 3000);
+    setTimeout(function(){ 
+      document.querySelector(".forName").style.color = "black"
+    }, 3000);
+    // document.querySelector(".forName").style.color = "black";
+    return;
    }
 
     instanceTheGreet.weStorenames(nameElem.value);
@@ -67,7 +71,9 @@ if(radio) {
 
 else if (!radio){
   document.querySelector(".errRbtn").style.color = "red";
-  setTimeout(function(){ errorMsgElem.innerHTML = ""}, 3000);
+  setTimeout(function(){ 
+    document.querySelector(".errRbtn").style.color = "black"
+  }, 3000);
 }
 
 var myNames = JSON.stringify(instanceTheGreet.getName());
