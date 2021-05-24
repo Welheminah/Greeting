@@ -103,8 +103,23 @@ input[type='radio']:checked:after {
     align-items: center;
     border: 3px solid yellow;
     margin: auto;
-    
-    
+  }
+
+  .tests {
+    align-items: center;
+    text-align: center;
+  }
+  .tests button {
+    padding: 20px 30px;
+    background: linear-gradient(#999, #111);
+    border: 1px solid yellow;
+    color: yellow;
+    cursor: pointer;
+    font-size: 30px;
+  }
+
+  .tests button a {
+    color: yellow;
   }
 
   .counter {

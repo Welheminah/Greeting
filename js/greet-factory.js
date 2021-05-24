@@ -44,7 +44,6 @@ function weStorenames(ourName){
 
 function getName(){
     return nameStore
-    // return name;
 }
 
 function theName(){
